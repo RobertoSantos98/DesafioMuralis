@@ -7,5 +7,15 @@
         public string Cidade { get; private set; }
         public string Numero { get; private set; }
         public string Complemento { get; private set; }
+
+        public Endereco(string cep, string logradouro, string cidade, string numero, string complemento)
+        {
+            Cep = cep;
+            Logradouro = logradouro;
+            Cidade = cidade;
+            Numero = numero;
+            Complemento = complemento;
+        }
+
     }
 }

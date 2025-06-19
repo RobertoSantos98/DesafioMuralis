@@ -19,7 +19,7 @@ namespace DesafioMuralis.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nome = table.Column<string>(type: "text", nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DataCadastro = table.Column<DateOnly>(type: "date", nullable: false),
                     Endereco_Cep = table.Column<string>(type: "text", nullable: false),
                     Endereco_Logradouro = table.Column<string>(type: "text", nullable: false),
                     Endereco_Cidade = table.Column<string>(type: "text", nullable: false),
@@ -37,13 +37,13 @@ namespace DesafioMuralis.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ClienteId = table.Column<int>(type: "integer", nullable: false),
                     Tipo = table.Column<string>(type: "text", nullable: false),
-                    Texto = table.Column<string>(type: "text", nullable: false)
+                    Texto = table.Column<string>(type: "text", nullable: false),
+                    ClienteId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Contato", x => new { x.ClienteId, x.Id });
+                    table.PrimaryKey("PK_Contato", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Contato_Clientes_ClienteId",
                         column: x => x.ClienteId,
@@ -51,6 +51,11 @@ namespace DesafioMuralis.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contato_ClienteId",
+                table: "Contato",
+                column: "ClienteId");
         }
 
         /// <inheritdoc />

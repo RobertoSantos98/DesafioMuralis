@@ -1,4 +1,7 @@
+using DesafioMuralis.Applications.Providers;
+using DesafioMuralis.Domain.Models;
 using DesafioMuralis.Infrastructure;
+using DesafioMuralis.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +15,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<ConnectionContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHttpClient<ViaCepService>();
+
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<ICepProvider, ViaCepService>();
 
 var app = builder.Build();
 

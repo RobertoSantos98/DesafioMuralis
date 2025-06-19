@@ -30,8 +30,8 @@ namespace DesafioMuralis.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("DataCadastro")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<DateOnly>("DataCadastro")
+                        .HasColumnType("date");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -46,14 +46,14 @@ namespace DesafioMuralis.Migrations
                 {
                     b.OwnsMany("DesafioMuralis.Domain.Models.Contato", "Contatos", b1 =>
                         {
-                            b1.Property<int>("ClienteId")
-                                .HasColumnType("integer");
-
                             b1.Property<int>("Id")
                                 .ValueGeneratedOnAdd()
                                 .HasColumnType("integer");
 
                             NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b1.Property<int>("Id"));
+
+                            b1.Property<int>("ClienteId")
+                                .HasColumnType("integer");
 
                             b1.Property<string>("Texto")
                                 .IsRequired()
@@ -63,7 +63,9 @@ namespace DesafioMuralis.Migrations
                                 .IsRequired()
                                 .HasColumnType("text");
 
-                            b1.HasKey("ClienteId", "Id");
+                            b1.HasKey("Id");
+
+                            b1.HasIndex("ClienteId");
 
                             b1.ToTable("Contato");
 
