@@ -1,6 +1,4 @@
----
 
-```markdown
 # Desafio Muralis - Desenvolvedor .NET Jr.
 
 Este projeto foi desenvolvido como parte de um **desafio técnico para a vaga de Desenvolvedor .NET Júnior** na empresa **Muralis**. O objetivo foi aplicar boas práticas de desenvolvimento, com foco na arquitetura limpa e nos princípios do SOLID, criando uma base sólida para um sistema de cadastro e gerenciamento de clientes.
@@ -13,8 +11,6 @@ Este projeto foi desenvolvido como parte de um **desafio técnico para a vaga de
 - **Swagger para documentação da API**
 - **AutoMapper**
 - **Arquitetura em camadas com Clean Architecture**
-
----
 
 ## 🧱 Estrutura do Projeto
 
@@ -91,7 +87,7 @@ Este projeto foi uma excelente oportunidade para praticar conceitos fundamentais
 
 ---
 
-**Desenvolvido por:** Roberto Felipe Nogueira Raphael dos Santos  
-🔗 [LinkedIn](https://www.linkedin.com/in/roberto-felipe-santos)
+**Desenvolvido por:** Roberto Santos  
+🔗 [LinkedIn](https://www.linkedin.com/in/robertosantos98)
 
 ```
