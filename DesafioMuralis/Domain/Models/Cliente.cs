@@ -22,5 +22,25 @@ namespace DesafioMuralis.Domain.Models
             Contatos = contatos ?? throw new ArgumentNullException(nameof(contatos));
             Endereco = endereco ?? throw new ArgumentNullException(nameof(endereco));
         }
+
+        public void AlterarNome(string novoNome)
+        {
+            Nome = novoNome;
+        }
+
+        public void AtualizarContatos(List<Contato> novosContatos)
+        {
+            Contatos.Clear();
+            foreach (var contato in novosContatos)
+            {
+                Contatos.Add(contato);
+            }
+        }
+
+        public void AtualizarEndereco(Endereco novoEndereco)
+        {
+            Endereco = novoEndereco;
+        }
+
     }
 }

@@ -1,3 +1,4 @@
+using DesafioMuralis.Applications.Mapping;
 using DesafioMuralis.Applications.Providers;
 using DesafioMuralis.Domain.Models;
 using DesafioMuralis.Infrastructure;
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<ConnectionContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddHttpClient<ViaCepService>();
+
+builder.Services.AddAutoMapper(typeof(DomainDTOMapping));
 
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<ICepProvider, ViaCepService>();
